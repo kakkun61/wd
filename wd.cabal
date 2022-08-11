@@ -55,40 +55,9 @@ common release
                  -Woperator-whitespace
                  -Wredundant-bang-patterns
 
-library
-  import: release
-  hs-source-dirs: src
-  exposed-modules: Distribution.Wd
-  build-depends: directory >= 1.2.3.0,
-                 process >= 1.2.0.0
-
 executable wd
   import: release
-  hs-source-dirs: app
+  hs-source-dirs: .
   main-is: main.hs
-  build-depends: wd
-
-test-suite doctest
-  import: common
-  type: exitcode-stdio-1.0
-  main-is: main.hs
-  hs-source-dirs: test/doctest
-  build-depends: wd,
-                 doctest
-  ghc-options: -threaded
-               -rtsopts
-               -with-rtsopts=-N
-  build-tool-depends: doctest-discover:doctest-discover
-
-test-suite spec
-  import: common
-  type: exitcode-stdio-1.0
-  main-is: Spec.hs
-  hs-source-dirs: test/spec
-  other-modules: Distribution.WdSpec
-  build-depends: wd,
-                 hspec
-  ghc-options: -threaded
-               -rtsopts
-               -with-rtsopts=-N
-  build-tool-depends: hspec-discover:hspec-discover
+  build-depends: directory >= 1.2.3.0,
+                 process >= 1.2.0.0

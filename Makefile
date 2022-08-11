@@ -8,32 +8,17 @@ build:
 build-deps:
 	cabal v2-build --only-dependencies
 
-.PHONY: test
-test: doctest spec
-
-.PHONY: doctest
-doctest:
-	cabal v2-test doctest
-
-.PHONY: spec
-spec:
-	cabal v2-test spec
-
 .PHONY: repl
 repl:
 	cabal v2-repl
 
 .PHONY: format
 format:
-	stylish-haskell --inplace --recursive src app test
+	stylish-haskell --inplace --recursive .
 
 .PHONY: lint
 lint:
-	hlint src app
-
-.PHONY: doc
-doc:
-	cabal v2-haddock
+	hlint .
 
 .PHONY: clean
 clean:

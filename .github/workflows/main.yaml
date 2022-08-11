@@ -5,18 +5,13 @@ on:
   - pull_request
 
 jobs:
-  test:
+  build:
     strategy:
       matrix:
         ghc: ['8.6', '8.8', '8.10', '9.0', '9.2']
-        test: [doctest, spec]
         continue-on-error: [false]
         include:
           - ghc: latest
-            test: doctest
-            continue-on-error: true
-          - ghc: latest
-            test: spec
             continue-on-error: true
 
     runs-on: ubuntu-latest
@@ -36,7 +31,6 @@ jobs:
           key: cabal-${{ runner.os }}-${{ matrix.ghc }}
       - run: make build-deps
       - run: make build
-      - run: make ${{ matrix.test }}
 
   lint:
     runs-on: ubuntu-latest

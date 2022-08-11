@@ -1,13 +1,4 @@
 cradle:
   cabal:
-    - path: "./src"
-      component: "lib:wd"
-
-    - path: "./app/main.hs"
+    - path: "./main.hs"
       component: "wd:exe:wd"
-
-    - path: "./test/doctest"
-      component: "wd:test:doctest"
-
-    - path: "./test/spec"
-      component: "wd:test:spec"
