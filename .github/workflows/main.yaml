@@ -1,0 +1,55 @@
+name: main
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        ghc: ['8.6', '8.8', '8.10', '9.0', '9.2']
+        test: [doctest, spec]
+        continue-on-error: [false]
+        include:
+          - ghc: latest
+            test: doctest
+            continue-on-error: true
+          - ghc: latest
+            test: spec
+            continue-on-error: true
+
+    runs-on: ubuntu-latest
+
+    continue-on-error: ${{ matrix.continue-on-error }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haskell/actions/setup@v1
+        with:
+          ghc-version: ${{ matrix.ghc }}
+      - uses: actions/cache@v2
+        with:
+          path: |
+            $HOME/.cabal/packages
+            $HOME/.cabal/store
+          key: cabal-${{ runner.os }}-${{ matrix.ghc }}
+      - run: make build-deps
+      - run: make build
+      - run: make ${{ matrix.test }}
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haskell/actions/hlint-setup@v2
+      - run: make lint
+
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - run: curl -sL https://raw.github.com/haskell/stylish-haskell/master/scripts/latest.sh | sh -s -- --inplace --recursive src app test
+      - run: git diff --exit-code

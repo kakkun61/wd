@@ -1,0 +1,3 @@
+package haskell-project-template
+  ghc-options: -Werror
+  test-show-details: direct
