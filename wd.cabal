@@ -1,11 +1,11 @@
 cabal-version: 2.2
 
-name: at
+name: wd
 version: 0.1.0.0
 synopsis:
 description:
-homepage: https://github.com/kakkun61/at
-bug-reports: https://github.com/kakkun61/at/issues
+homepage: https://github.com/kakkun61/wd
+bug-reports: https://github.com/kakkun61/wd/issues
 license: Apache-2.0
 license-file: LICENSE
 author: Kazuki Okamoto (岡本和樹)
@@ -58,22 +58,22 @@ common release
 library
   import: release
   hs-source-dirs: src
-  exposed-modules: Distribution.At
+  exposed-modules: Distribution.Wd
   build-depends: directory >= 1.2.3.0,
                  process >= 1.2.0.0
 
-executable at
+executable wd
   import: release
   hs-source-dirs: app
   main-is: main.hs
-  build-depends: at
+  build-depends: wd
 
 test-suite doctest
   import: common
   type: exitcode-stdio-1.0
   main-is: main.hs
   hs-source-dirs: test/doctest
-  build-depends: at,
+  build-depends: wd,
                  doctest
   ghc-options: -threaded
                -rtsopts
@@ -85,8 +85,8 @@ test-suite spec
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   hs-source-dirs: test/spec
-  other-modules: Distribution.AtSpec
-  build-depends: at,
+  other-modules: Distribution.WdSpec
+  build-depends: wd,
                  hspec
   ghc-options: -threaded
                -rtsopts

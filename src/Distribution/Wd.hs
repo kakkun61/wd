@@ -1,13 +1,13 @@
-module Distribution.At
-  ( at
+module Distribution.Wd
+  ( wd
   ) where
 
 import System.Directory (withCurrentDirectory)
 import System.Process   (callProcess)
 
-at
+wd
   :: FilePath -- ^ Directory.
   -> FilePath -- ^ Command.
   -> [String] -- ^ Arguments.
   -> IO ()
-at dir cmd args = withCurrentDirectory dir $ callProcess cmd args
+wd dir cmd args = withCurrentDirectory dir $ callProcess cmd args
