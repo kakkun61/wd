@@ -1,11 +1,11 @@
 cabal-version: 2.2
 
-name: haskell-project-template
+name: at
 version: 0.1.0.0
 synopsis:
 description:
-homepage: https://github.com/kakkun61/haskell-project-template
-bug-reports: https://github.com/kakkun61/haskell-project-template/issues
+homepage: https://github.com/kakkun61/at
+bug-reports: https://github.com/kakkun61/at/issues
 license: Apache-2.0
 license-file: LICENSE
 author: Kazuki Okamoto (岡本和樹)
@@ -65,14 +65,14 @@ executable app
   import: release
   hs-source-dirs: app
   main-is: main.hs
-  build-depends: haskell-project-template
+  build-depends: at
 
 test-suite doctest
   import: common
   type: exitcode-stdio-1.0
   main-is: main.hs
   hs-source-dirs: test/doctest
-  build-depends: haskell-project-template,
+  build-depends: at,
                  doctest
   ghc-options: -threaded
                -rtsopts
@@ -85,7 +85,7 @@ test-suite spec
   main-is: Spec.hs
   hs-source-dirs: test/spec
   other-modules: LibSpec
-  build-depends: haskell-project-template,
+  build-depends: at,
                  hspec
   ghc-options: -threaded
                -rtsopts

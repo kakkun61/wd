@@ -1,7 +1,5 @@
-# Changelog for haskell-project-template
+# Changelog for at
 
-## 0.1.0.0
-
-2021.01.01
+## Unreleased
 
 - First release.
