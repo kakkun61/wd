@@ -4,7 +4,7 @@ cradle:
       component: "lib:at"
 
     - path: "./app/main.hs"
-      component: "at:exe:app"
+      component: "at:exe:at"
 
     - path: "./test/doctest"
       component: "at:test:doctest"

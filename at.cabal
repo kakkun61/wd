@@ -58,10 +58,11 @@ common release
 library
   import: release
   hs-source-dirs: src
-  exposed-modules: Lib
-  build-depends:
+  exposed-modules: Distribution.At
+  build-depends: directory >= 1.2.3.0,
+                 process >= 1.2.0.0
 
-executable app
+executable at
   import: release
   hs-source-dirs: app
   main-is: main.hs
@@ -84,7 +85,7 @@ test-suite spec
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   hs-source-dirs: test/spec
-  other-modules: LibSpec
+  other-modules: Distribution.AtSpec
   build-depends: at,
                  hspec
   ghc-options: -threaded
