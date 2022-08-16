@@ -8,6 +8,10 @@ build:
 build-deps:
 	cabal v2-build --only-dependencies
 
+.PHONY: install
+install:
+	cabal v2-install
+
 .PHONY: repl
 repl:
 	cabal v2-repl
