@@ -27,6 +27,6 @@ jobs:
       - run: make install CABAL_OPTS='--install-method=copy --installdir=out'
       - uses: actions/upload-artifact@v3
         with:
-          name: wd-${{ matrix.ghc }}-${{ matrix.os }}
+          name: wd-${{ github.ref_name }}-${{ matrix.ghc }}-${{ matrix.os }}
           path: out/wd*
           if-no-files-found: error
