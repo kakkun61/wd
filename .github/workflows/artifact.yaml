@@ -1,0 +1,32 @@
+name: artifact
+
+on:
+  push:
+    branches: [release-*]
+
+jobs:
+  artifact:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        ghc: ['9.2']
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: haskell/actions/setup@v1
+        with:
+          ghc-version: ${{ matrix.ghc }}
+      - uses: actions/cache@v2
+        with:
+          path: |
+            $HOME/.cabal/packages
+            $HOME/.cabal/store
+          key: cabal-${{ runner.os }}-${{ matrix.ghc }}
+      - run: make install CABAL_OPTS='--install-method=copy --installdir=out'
+      - uses: actions/upload-artifact@v3
+        with:
+          name: wd-${{ matrix.ghc }}-${{ matrix.os }}
+          path: out/wd*
+          if-no-files-found: error

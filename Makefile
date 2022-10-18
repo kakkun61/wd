@@ -10,7 +10,7 @@ build-deps:
 
 .PHONY: install
 install:
-	cabal v2-install
+	cabal v2-install $(CABAL_OPTS)
 
 .PHONY: repl
 repl:
