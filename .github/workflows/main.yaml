@@ -46,5 +46,5 @@ jobs:
 
   #   steps:
   #     - uses: actions/checkout@v2
-  #     - run: curl -sL https://raw.github.com/haskell/stylish-haskell/master/scripts/latest.sh | sh -s -- --inplace --recursive src app test
+  #     - run: curl -sL https://raw.github.com/haskell/stylish-haskell/master/scripts/latest.sh | sh -s -- --inplace --recursive .
   #     - run: git diff --exit-code
