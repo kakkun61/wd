@@ -40,10 +40,11 @@ jobs:
       - uses: haskell/actions/hlint-setup@v2
       - run: make lint
 
-  format:
-    runs-on: ubuntu-latest
+  # Stop until merging https://github.com/haskell/stylish-haskell/pull/420
+  # format:
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - run: curl -sL https://raw.github.com/haskell/stylish-haskell/master/scripts/latest.sh | sh -s -- --inplace --recursive src app test
-      - run: git diff --exit-code
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: curl -sL https://raw.github.com/haskell/stylish-haskell/master/scripts/latest.sh | sh -s -- --inplace --recursive src app test
+  #     - run: git diff --exit-code
