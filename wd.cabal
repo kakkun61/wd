@@ -2,8 +2,8 @@ cabal-version: 2.2
 
 name: wd
 version: 0.1.0.0
-synopsis:
-description:
+synopsis: Run a command on a specified directory.
+description: This is a command to run another command on a specified directory.
 homepage: https://github.com/kakkun61/wd
 bug-reports: https://github.com/kakkun61/wd/issues
 license: Apache-2.0
@@ -13,9 +13,13 @@ maintainer: kazuki.okamoto@kakkun61.com
 copyright: 2021 Kazuki Okamoto (岡本和樹)
 category: Data
 build-type: Simple
-tested-with: GHC == 8.6.5, GHC == 8.8.4, GHC == 8.10.4, GHC == 9.0.1
+tested-with: GHC == 8.6.5, GHC == 8.8.4, GHC == 8.10.7, GHC == 9.0.2, GHC == 9.2.2
 extra-source-files: README.md,
                     CHANGELOG.md
+
+source-repository head
+  type: git
+  location: https://github.com/kakkun61/wd
 
 common common
   build-depends: base >= 4 && < 5
