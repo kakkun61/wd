@@ -4,6 +4,10 @@ on:
   push:
     branches: [release-*]
 
+defaults:
+  run:
+    working-directory: ./haskell
+
 jobs:
   artifact:
     strategy:
@@ -16,17 +20,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: haskell/actions/setup@v1
+        id: setup-haskell
         with:
           ghc-version: ${{ matrix.ghc }}
+      - run: ln -s cabal.project.${{ matrix.ghc }}.freeze cabal.project.freeze
       - uses: actions/cache@v2
         with:
           path: |
-            $HOME/.cabal/packages
-            $HOME/.cabal/store
-          key: cabal-${{ runner.os }}-${{ matrix.ghc }}
-      - run: make install CABAL_OPTS='--install-method=copy --installdir=out'
+            ${{ steps.setup-haskell.outputs.cabal-store }}
+            ./haskell/dist-newstyle
+          key: cabal-${{ runner.os }}-${{ matrix.ghc }}-${{ hashFiles('/haskell/cabal.project.freeze') }}
+          restore-keys: cabal-${{ runner.os }}-${{ matrix.ghc }}-
+      - run: cabal update
+      - run: make install CABAL_OPTS='--install-method=copy --installdir=./out'
       - uses: actions/upload-artifact@v3
         with:
           name: wd-${{ github.ref_name }}-${{ matrix.ghc }}-${{ matrix.os }}
-          path: out/wd*
+          path: ./haskell/out/wd*
           if-no-files-found: error
