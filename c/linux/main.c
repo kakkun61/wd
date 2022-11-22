@@ -8,6 +8,14 @@ int const dirBufSize = 1024;
 
 char const *const usage = "Usage: wd DIR CMD [ARGS]\n";
 
+#define LOG_ERROR(stream, message) \
+  (logError(stream, message, errno, __FILE__, __LINE__))
+
+void logError(FILE *const stream, char message[], int const errorNo, char file[], int const line)
+{
+  fprintf(stream, "Error (%s:%d): %s: %s (%d)\n", file, line, message, strerror(errorNo), errorNo);
+}
+
 int main(int argc, char *argv[])
 {
   if (argc <= 2)
@@ -27,34 +35,30 @@ int main(int argc, char *argv[])
       {
         int index;
         for (index = 3, newIndex = 1; index < argc; index++, newIndex++)
-        {
           newArgs[newIndex] = argv[index];
-        }
       }
       newArgs[newIndex] = NULL;
     }
     if (NULL == getcwd(originalDir, dirBufSize))
     {
-      fprintf(stderr, "Error (%d): %s (%d)\n", __LINE__, strerror(errno), errno);
+      LOG_ERROR(stderr, "getcwd");
       return EXIT_FAILURE;
     }
     if (-1 == chdir(dir))
     {
-      fprintf(stderr, "Error (%d): %s (%d)\n", __LINE__, strerror(errno), errno);
+      LOG_ERROR(stderr, "chdir");
       return EXIT_FAILURE;
     }
     if (-1 == execvp(cmd, newArgs))
     {
-      fprintf(stderr, "Error (%d): %s (%d)\n", __LINE__, strerror(errno), errno);
+      LOG_ERROR(stderr, "execvp");
       if (-1 == chdir(originalDir))
-      {
-        fprintf(stderr, "Error (%d): %s (%d)\n", __LINE__, strerror(errno), errno);
-      }
+        LOG_ERROR(stderr, "chdir");
       return EXIT_FAILURE;
     }
     if (-1 == chdir(originalDir))
     {
-      fprintf(stderr, "Error (%d): %s (%d)\n", __LINE__, strerror(errno), errno);
+      LOG_ERROR(stderr, "chdir");
       return EXIT_FAILURE;
     }
   }
