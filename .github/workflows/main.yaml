@@ -13,8 +13,8 @@ jobs:
         working-directory: ./linux
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: cachix/install-nix-action@v18
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v22
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: nix-build
@@ -27,6 +27,6 @@ jobs:
         working-directory: ./windows
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: microsoft/setup-msbuild@v1.1
+      - uses: actions/checkout@v3
+      - uses: microsoft/setup-msbuild@v1
       - run: msbuild
