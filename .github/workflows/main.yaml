@@ -10,7 +10,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./c/linux
+        working-directory: ./linux
 
     steps:
       - uses: actions/checkout@v2
@@ -24,7 +24,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./c/windows
+        working-directory: ./windows
 
     steps:
       - uses: actions/checkout@v2
