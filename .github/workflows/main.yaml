@@ -25,6 +25,26 @@ jobs:
           name: wd-x64-linux
           path: ${{ env.RESULT }}/wd
 
+  build-macos:
+    runs-on: macos-latest
+
+    defaults:
+      run:
+        working-directory: ./linux
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: cachix/install-nix-action@v22
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+      - run: nix-build
+      - run: echo "RESULT=$(readlink -f result)" >> $GITHUB_ENV
+        # workaround https://github.com/actions/upload-artifact/issues/92#issuecomment-1080347032
+      - uses: actions/upload-artifact@v3
+        with:
+          name: wd-x64-macos
+          path: ${{ env.RESULT }}/wd
+
   build-windows:
     runs-on: windows-latest
 
