@@ -37,6 +37,12 @@ int main(int argc, char *argv[])
     char *dir = argv[1];
     char *cmd = argv[2];
     char *newArgs[NEW_ARG_SIZE];
+    if (NEW_ARG_SIZE - 1 < argc - 2) {
+      //    argv: wd dir cmd args...
+      // newArgs:        cmd args... NULL
+      fprintf(stderr, "Error: Arguments are too many. Its number must be less than %d.\n", NEW_ARG_SIZE - 1);
+      return EXIT_FAILURE;
+    }
     {
       int newIndex;
       newArgs[0] = cmd;
