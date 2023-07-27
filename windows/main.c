@@ -9,6 +9,8 @@
 #define NEW_ARG_SIZE 64
 #define ERR_BUF_SIZE 128
 
+char const *const version = "1.0.0";
+
 char const *const usage = "Usage: wd DIR CMD [ARGS]\n";
 
 #define LOG_ERROR(stream, message) \
@@ -27,8 +29,7 @@ int main(int argc, char *argv[])
 {
   if (argc <= 2)
   {
-    fprintf(stderr, "Error: At least 2 arguments are necessary.\n");
-    fprintf(stderr, usage);
+    fprintf(stderr, "Error: At least 2 arguments are necessary.\n%swd %s\n", usage, version);
     return EXIT_FAILURE;
   }
   {
