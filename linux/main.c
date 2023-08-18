@@ -50,18 +50,11 @@ int main(int argc, char *argv[])
       LOG_ERROR(stderr, "chdir");
       return EXIT_FAILURE;
     }
-    if (-1 == execvp(cmd, newArgs))
-    {
-      LOG_ERROR(stderr, "execvp");
-      if (-1 == chdir(originalDir))
-        LOG_ERROR(stderr, "chdir");
-      return EXIT_FAILURE;
-    }
+    execvp(cmd, newArgs); /* `execvp` does not return if it succeeds. */
+    LOG_ERROR(stderr, "execvp");
     if (-1 == chdir(originalDir))
-    {
       LOG_ERROR(stderr, "chdir");
-      return EXIT_FAILURE;
-    }
+    return EXIT_FAILURE;
   }
   return EXIT_SUCCESS;
 }
