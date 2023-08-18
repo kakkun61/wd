@@ -9,7 +9,7 @@
 #define NEW_ARG_SIZE 64
 #define ERR_BUF_SIZE 128
 
-char const *const version = "1.0.0";
+char const *const version = "1.1.0";
 
 char const *const usage = "Usage: wd DIR CMD [ARGS]\n";
 
