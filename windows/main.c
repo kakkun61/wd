@@ -63,17 +63,21 @@ int main(int argc, char *argv[])
       LOG_ERROR(stderr, "_chdir");
       return EXIT_FAILURE;
     }
-    if (-1 == _execvp(cmd, newArgs))
     {
-      LOG_ERROR(stderr, "_execvp");
+      intptr_t const spawnResult = _spawnvp(_P_WAIT, (char const *) cmd, (char const *const *) newArgs);
+      if (spawnResult == -1)
+      {
+        LOG_ERROR(stderr, "_execvp");
+        if (-1 == _chdir(originalDir))
+          LOG_ERROR(stderr, "_chdir");
+        return EXIT_FAILURE;
+      }
       if (-1 == _chdir(originalDir))
+      {
         LOG_ERROR(stderr, "_chdir");
-      return EXIT_FAILURE;
-    }
-    if (-1 == _chdir(originalDir))
-    {
-      LOG_ERROR(stderr, "_chdir");
-      return EXIT_FAILURE;
+        return EXIT_FAILURE;
+      }
+      return (int) spawnResult;
     }
   }
   return EXIT_SUCCESS;
