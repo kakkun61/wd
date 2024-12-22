@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
       intptr_t const spawnResult = _spawnvp(_P_WAIT, (char const *) cmd, (char const *const *) newArgs);
       if (spawnResult == -1)
       {
-        LOG_ERROR(stderr, "_execvp");
+        LOG_ERROR(stderr, "_spawnvp");
         if (-1 == _chdir(originalDir))
           LOG_ERROR(stderr, "_chdir");
         return EXIT_FAILURE;
