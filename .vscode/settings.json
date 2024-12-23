@@ -1,0 +1,22 @@
+{
+  "cSpell.words": [
+    "direnv",
+    "nixos",
+    "nixpkgs",
+    "numtide",
+    "pkgs",
+    "pname",
+    "spawnvp",
+    "stdenv"
+  ],
+  "cSpell.ignorePaths": [
+    "vscode-extension",
+    ".git/{info,lfs,logs,refs,objects}/**",
+    ".git/{index,*refs,*HEAD}",
+    ".vscode",
+    ".vscode-insiders",
+    ".direnv/**",
+    "flake.lock",
+    "*.vcxproj"
+  ]
+}

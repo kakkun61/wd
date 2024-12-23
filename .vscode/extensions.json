@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "streetsidesoftware.code-spell-checker",
+    "ms-vscode.cpptools",
+    "ms-vscode.cpptools-themes",
+    "mkhl.direnv",
+    "jnoortheen.nix-ide",
+    "editorconfig.editorconfig"
+  ]
+}

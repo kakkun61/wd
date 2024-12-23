@@ -13,11 +13,9 @@ char const *const version = "1.1.0";
 
 char const *const usage = "Usage: wd DIR CMD [ARGS]\n";
 
-#define LOG_ERROR(stream, message) \
-  (logError(stream, message, errno, __FILE__, __LINE__))
+#define LOG_ERROR(stream, message) (logError(stream, message, errno, __FILE__, __LINE__))
 
-void logError(FILE *const stream, char message[], int const errorNo, char file[], int const line)
-{
+void logError(FILE *const stream, char message[], int const errorNo, char file[], int const line) {
   char errorMessage[ERR_BUF_SIZE];
   if (0 != strerror_s(errorMessage, ERR_BUF_SIZE, errorNo))
     fprintf(stream, "Error (%s:%d): %s: (%d)\n", file, line, message, errorNo);
@@ -25,10 +23,8 @@ void logError(FILE *const stream, char message[], int const errorNo, char file[]
     fprintf(stream, "Error (%s:%d): %s: %s (%d)\n", file, line, message, errorMessage, errorNo);
 }
 
-int main(int argc, char *argv[])
-{
-  if (argc <= 2)
-  {
+int main(int argc, char *argv[]) {
+  if (argc <= 2) {
     fprintf(stderr, "Error: At least 2 arguments are necessary.\n%swd %s\n", usage, version);
     return EXIT_FAILURE;
   }
@@ -48,32 +44,26 @@ int main(int argc, char *argv[])
       newArgs[0] = cmd;
       {
         int index;
-        for (index = 3, newIndex = 1; index < argc; index++, newIndex++)
-          newArgs[newIndex] = argv[index];
+        for (index = 3, newIndex = 1; index < argc; index++, newIndex++) newArgs[newIndex] = argv[index];
       }
       newArgs[newIndex] = NULL;
     }
-    if (NULL == _getcwd(originalDir, DIR_BUF_SIZE))
-    {
+    if (NULL == _getcwd(originalDir, DIR_BUF_SIZE)) {
       LOG_ERROR(stderr, "_getcwd");
       return EXIT_FAILURE;
     }
-    if (-1 == _chdir(dir))
-    {
+    if (-1 == _chdir(dir)) {
       LOG_ERROR(stderr, "_chdir");
       return EXIT_FAILURE;
     }
     {
       intptr_t const spawnResult = _spawnvp(_P_WAIT, (char const *) cmd, (char const *const *) newArgs);
-      if (spawnResult == -1)
-      {
+      if (spawnResult == -1) {
         LOG_ERROR(stderr, "_spawnvp");
-        if (-1 == _chdir(originalDir))
-          LOG_ERROR(stderr, "_chdir");
+        if (-1 == _chdir(originalDir)) LOG_ERROR(stderr, "_chdir");
         return EXIT_FAILURE;
       }
-      if (-1 == _chdir(originalDir))
-      {
+      if (-1 == _chdir(originalDir)) {
         LOG_ERROR(stderr, "_chdir");
         return EXIT_FAILURE;
       }

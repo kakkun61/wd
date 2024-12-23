@@ -4,3 +4,12 @@ wd: main.c
 .PHONY: install
 install:
 	install wd $(out)
+
+.PHONY: format
+format:
+	clang-format -i -style=file main.c
+	nixpkgs-fmt default.nix flake.nix
+
+.PHONY: clean
+clean:
+	rm -f wd
