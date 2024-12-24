@@ -13,10 +13,19 @@
       in
       {
         packages.default =
-          with pkgs; stdenv.mkDerivation {
+          with pkgs; stdenv.mkDerivation rec {
             pname = "wd";
             version = "0.1.0";
             src = ./.;
+            meta = with lib; {
+              homepage = https://github.com/kakkun61/wd;
+              changelog = "https://github.com/kakkun61/wd/releases/tag/${version}";
+              license = licenses.gpl3;
+              maintainers = [
+                { name = "Kazuki Okamoto (岡本和樹)"; }
+              ];
+              platforms = platforms.linux ++ platforms.darwin;
+            };
           };
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
