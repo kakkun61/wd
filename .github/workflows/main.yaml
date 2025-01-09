@@ -1,4 +1,4 @@
-name: c
+name: main
 
 on:
   - push

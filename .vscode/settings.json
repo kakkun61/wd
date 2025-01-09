@@ -1,11 +1,15 @@
 {
   "cSpell.words": [
+    "cachix",
     "direnv",
+    "fetchzip",
+    "msbuild",
     "nixos",
     "nixpkgs",
     "numtide",
     "pkgs",
     "pname",
+    "readlink",
     "spawnvp",
     "stdenv"
   ],

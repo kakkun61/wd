@@ -12,4 +12,4 @@ format:
 
 .PHONY: clean
 clean:
-	rm -f wd
+	-$(RM) wd
