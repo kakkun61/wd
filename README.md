@@ -47,4 +47,4 @@ On Windows:
 
 *Why you use `_spawnvp` on Windows instead of `_execvp` like `execvp` on Linux?*
 
-`_execvp` on Windows works like that overlays a calling process with a new process and that destroys the calling process. The new process runs in background.
+On Windows, `_execvp` overlays the calling process with a new one, destroying the original process. The new process runs in the background.
