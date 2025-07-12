@@ -10,7 +10,10 @@ char const *const version = "1.1.0";
 
 char const *const usage = "Usage: wd DIR CMD [ARGS]\n";
 
-#define LOG_ERROR(stream, message) (logError(stream, message, errno, __FILE__, __LINE__))
+#define LOG_ERROR(stream, message)                        \
+  do {                                                    \
+    logError(stream, message, errno, __FILE__, __LINE__); \
+  } while (0)
 
 void logError(FILE *const stream, char message[], int const errorNo, char file[], int const line) {
   fprintf(stream, "Error (%s:%d): %s: %s (%d)\n", file, line, message, strerror(errorNo), errorNo);
