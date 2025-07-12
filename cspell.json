@@ -1,8 +1,9 @@
 {
-  "cSpell.words": [
+  "words": [
     "cachix",
     "direnv",
     "fetchzip",
+    "ftprintf",
     "msbuild",
     "nixos",
     "nixpkgs",
@@ -11,9 +12,11 @@
     "pname",
     "readlink",
     "spawnvp",
-    "stdenv"
+    "stdenv",
+    "tcscat",
+    "tcslen"
   ],
-  "cSpell.ignorePaths": [
+  "ignorePaths": [
     "vscode-extension",
     ".git/{info,lfs,logs,refs,objects}/**",
     ".git/{index,*refs,*HEAD}",
