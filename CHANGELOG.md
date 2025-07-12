@@ -1,5 +1,11 @@
 # Changelog for wd
 
+## 1.2.0
+
+2025.07.12
+
+- On Windows, kill the child process on Ctrl-C for console programs only.
+
 ## 1.1.0
 
 2023.08.19

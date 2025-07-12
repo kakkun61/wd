@@ -15,7 +15,7 @@
         packages.default =
           with pkgs; stdenv.mkDerivation rec {
             pname = "wd";
-            version = "0.1.0";
+            version = "1.2.0";
             src = ./.;
             meta = with lib; {
               homepage = https://github.com/kakkun61/wd;

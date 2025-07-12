@@ -6,7 +6,7 @@
 
 int const dirBufSize = 1024;
 
-char const *const version = "1.1.0";
+char const *const version = "1.2.0";
 
 char const *const usage = "Usage: wd DIR CMD [ARGS]\n";
 
