@@ -3,15 +3,13 @@
 
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-23.05;
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in
-      {
+  outputs = inputs@{ self, nixpkgs, flake-parts }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = nixpkgs.lib.systems.flakeExposed;
+      perSystem = { pkgs, ... }: {
         packages.default =
           with pkgs; stdenv.mkDerivation rec {
             pname = "wd";
@@ -34,6 +32,6 @@
             stdenv
           ];
         };
-      }
-    );
+      };
+    };
 }
