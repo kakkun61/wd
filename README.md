@@ -21,12 +21,8 @@ Usage: wd DIR CMD [ARGS]
 
 ## Install
 
-On Linux:
-
-```
-> cd linux
-> make install
-```
+You can get the binaries from the [release page](https://github.com/kakkun61/wd/releases/latest).
+Put it in your `PATH`.
 
 On Nix:
 
@@ -36,15 +32,18 @@ Set up [Nix User Repository](https://github.com/nix-community/NUR) and
 > nix-env -f '<nixpkgs>' -iA nur.repos.kakkun61.wd
 ```
 
+## Build
+
+On Linux:
+
+```
+> cd linux
+> make install
+```
+
 On Windows:
 
 ```
 > cd windows
 > msbuild
 ```
-
-## Note
-
-*Why you use `_spawnvp` on Windows instead of `_execvp` like `execvp` on Linux?*
-
-On Windows, `_execvp` overlays the calling process with a new one, destroying the original process. The new process runs in the background.
