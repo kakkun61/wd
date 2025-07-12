@@ -2,7 +2,7 @@
   description = "This is a command to run another command on a specified directory.";
 
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-23.05;
+    nixpkgs.url = github:NixOS/nixpkgs/nixos-25.05;
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
