@@ -13,7 +13,7 @@ jobs:
         working-directory: ./linux
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixos-unstable
@@ -37,7 +37,7 @@ jobs:
         working-directory: ./linux
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: cachix/install-nix-action@v31
         with:
           nix_path: nixpkgs=channel:nixos-unstable
@@ -61,7 +61,7 @@ jobs:
         working-directory: ./windows
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: microsoft/setup-msbuild@v2
       - run: msbuild /property:Configuration=Release
       - uses: actions/upload-artifact@v4
