@@ -24,7 +24,7 @@ jobs:
       - run: nix-build
       - run: echo "RESULT=$(readlink -f result)" >> $GITHUB_ENV
         # workaround https://github.com/actions/upload-artifact/issues/92#issuecomment-1080347032
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: wd-x64-linux
           path: ${{ env.RESULT }}/wd
@@ -48,7 +48,7 @@ jobs:
       - run: nix-build
       - run: echo "RESULT=$(readlink -f result)" >> $GITHUB_ENV
         # workaround https://github.com/actions/upload-artifact/issues/92#issuecomment-1080347032
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: wd-x64-macos
           path: ${{ env.RESULT }}/wd
@@ -64,7 +64,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: microsoft/setup-msbuild@v2
       - run: msbuild /property:Configuration=Release
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: wd-x64-windows
           path: ./windows/Release/wd.exe
