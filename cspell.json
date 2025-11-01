@@ -4,17 +4,22 @@
     "direnv",
     "fetchzip",
     "ftprintf",
+    "kakkun",
+    "Kazuki",
     "msbuild",
+    "nixfmt",
     "nixos",
     "nixpkgs",
     "numtide",
+    "Okamoto",
     "pkgs",
     "pname",
     "readlink",
     "spawnvp",
     "stdenv",
     "tcscat",
-    "tcslen"
+    "tcslen",
+    "treefmt"
   ],
   "ignorePaths": [
     "vscode-extension",

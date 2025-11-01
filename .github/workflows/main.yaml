@@ -8,10 +8,6 @@ jobs:
   build-linux:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: ./linux
-
     steps:
       - uses: actions/checkout@v5
       - uses: cachix/install-nix-action@v31
@@ -21,7 +17,7 @@ jobs:
         with:
           name: kakkun61-public
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - run: nix-build
+      - run: nix build
       - run: echo "RESULT=$(readlink -f result)" >> $GITHUB_ENV
         # workaround https://github.com/actions/upload-artifact/issues/92#issuecomment-1080347032
       - uses: actions/upload-artifact@v5
@@ -32,10 +28,6 @@ jobs:
   build-macos:
     runs-on: macos-latest
 
-    defaults:
-      run:
-        working-directory: ./linux
-
     steps:
       - uses: actions/checkout@v5
       - uses: cachix/install-nix-action@v31
@@ -45,7 +37,7 @@ jobs:
         with:
           name: kakkun61-public
           authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-      - run: nix-build
+      - run: nix build
       - run: echo "RESULT=$(readlink -f result)" >> $GITHUB_ENV
         # workaround https://github.com/actions/upload-artifact/issues/92#issuecomment-1080347032
       - uses: actions/upload-artifact@v5
