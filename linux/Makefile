@@ -3,7 +3,7 @@ wd: main.c
 
 .PHONY: install
 install: wd
-	install wd $(out)
+	install -D -m 755 wd $(out)/bin/wd
 
 .PHONY: format
 format:

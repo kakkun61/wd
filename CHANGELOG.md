@@ -1,5 +1,11 @@
 # Changelog for wd
 
+## 1.2.1
+
+2026.11.19
+
+- Install the binary into `$out/bin` on Nix.
+
 ## 1.2.0
 
 2025.07.12

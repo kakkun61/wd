@@ -27,7 +27,7 @@
             with pkgs;
             stdenv.mkDerivation rec {
               pname = "wd";
-              version = "1.2.0";
+              version = "1.2.1";
               src = ./linux;
               meta = with lib; {
                 homepage = "https://github.com/kakkun61/wd";

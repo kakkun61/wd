@@ -23,7 +23,7 @@ jobs:
       - uses: actions/upload-artifact@v7
         with:
           name: wd-x64-linux
-          path: ${{ env.RESULT }}/wd
+          path: ${{ env.RESULT }}/bin/wd
 
   build-macos:
     runs-on: macos-latest
@@ -43,7 +43,7 @@ jobs:
       - uses: actions/upload-artifact@v7
         with:
           name: wd-arm64-macos
-          path: ${{ env.RESULT }}/wd
+          path: ${{ env.RESULT }}/bin/wd
 
   build-windows:
     runs-on: windows-latest
